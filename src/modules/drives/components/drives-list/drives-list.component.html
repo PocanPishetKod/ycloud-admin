@@ -1,0 +1,29 @@
+<div id="container" class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center">
+    <button id="addDriveButton" (click)="showCreateDriveModal()" mat-raised-button color="primary">Создать диск</button>
+    <div style="height: 100%;" fxFlex="60%">
+        <table mat-table [dataSource]="drives" class="mat-elevation-z8">
+            <ng-container matColumnDef="Id">
+                <th mat-header-cell *matHeaderCellDef>Id</th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="TotalSize">
+                <th mat-header-cell *matHeaderCellDef>TotalSize</th>
+                <td mat-cell *matCellDef="let element"> {{element.totalSize}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="MaxSize">
+                <th mat-header-cell *matHeaderCellDef>MaxSize</th>
+                <td mat-cell *matCellDef="let element"> {{element.maxSize}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="OwnerId">
+                <th mat-header-cell *matHeaderCellDef>OwnerId</th>
+                <td mat-cell *matCellDef="let element"> {{element.ownerId}} </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="showEditDriveModal(row)"></tr>
+        </table>
+    </div>
+</div>
