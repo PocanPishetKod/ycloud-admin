@@ -11,7 +11,7 @@ export class RoutesProvider {
     public static provide(): Routes {
         return [
             { path: this.baseUri, redirectTo: `/${this.drives}`, pathMatch: "full" },
-            { path: this.drives, component: DrivesListComponent, /*canActivate: [AuthGuard]*/ },
+            { path: this.drives, component: DrivesListComponent, canActivate: [AuthGuard] },
             { path: this.signInRedirect, component: SignInRedirectComponent }
         ];
     }

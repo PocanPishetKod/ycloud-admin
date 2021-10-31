@@ -42,7 +42,7 @@ export class DrivesListComponent implements OnInit {
         }
 
         let createdDrive = await this._driveApiService
-            .create({ maxSize: drive.maxSize, ownerId: drive.ownerId });
+            .create({ maxSize: drive.maxSize, userId: drive.ownerId });
 
         this.drives.push(createdDrive);
         this.table?.renderRows();
@@ -97,6 +97,15 @@ export class DrivesListComponent implements OnInit {
         dialogRef.afterClosed().subscribe(async (drive: IDrive) => {
             await this.onUpdateModalClosed(drive);
         });
+    }
+
+    public getAccountEmail(accountId: string): string {
+        let account = this.accounts.find(a => a.id == accountId);
+        if (!account) {
+            return accountId;
+        }
+
+        return account.email;
     }
 
     public async ngOnInit(): Promise<void> {
